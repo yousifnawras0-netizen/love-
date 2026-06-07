@@ -159,9 +159,11 @@ counter.innerHTML =
 
 message.innerHTML =
 texts[Math.min(tries-1,texts.length-1)];
+const x = 50 + Math.random() * 120;
+const y = 20 + Math.random() * 50;
 
-const x = 80 + Math.random() * 150;
-const y = 260 + Math.random() * 80;
+no.style.left = x + "px";
+no.style.top = y + "px";
 no.style.left = x + "px";
 no.style.top = y + "px";
 
