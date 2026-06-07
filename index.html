@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>رسالة خاصة ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Tahoma,sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ffd6e7,#fff0f7);
+}
+
+.card{
+background:white;
+width:380px;
+max-width:95%;
+padding:25px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+z-index:10;
+}
+
+img{
+width:220px;
+border-radius:20px;
+}
+
+h2{
+margin-top:15px;
+color:#ff4f8b;
+}
+
+#message{
+margin-top:10px;
+color:#666;
+font-size:18px;
+}
+
+.buttons{
+margin-top:25px;
+position:relative;
+height:120px;
+}
+
+button{
+border:none;
+cursor:pointer;
+padding:15px 35px;
+border-radius:40px;
+font-size:18px;
+transition:.3s;
+}
+
+#yes{
+background:#ff4f8b;
+color:white;
+font-weight:bold;
+}
+
+#no{
+background:#e5e5e5;
+position:absolute;
+}
+
+#counter{
+margin-top:15px;
+font-size:14px;
+color:#888;
+}
+
+.heart{
+position:fixed;
+font-size:30px;
+animation:float 5s linear forwards;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+<div class="card">
+<video width="220" autoplay loop muted src="img/cat1.mp4" id="music"></video>
+<h2 id="title">عندي سؤال صغير ❤️</h2>
+
+<div id="message">
+تحبينن يوسف؟😅
+</div>
+
+<div class="buttons">
+
+<button id="yes">
+إي ❤️
+</button>
+
+<button id="no">
+لا 🙄
+</button>
+
+</div>
+
+<div id="counter">
+محاولات الرفض: 0
+</div>
+
+</div>
+
+<script>
+
+const girlName = "طبطبي";
+const yourName = "رجلجج";
+const yes = document.getElementById("yes")
+const no = document.getElementById("no");
+const message = document.getElementById("message");
+const counter = document.getElementById("counter");
+const cat = document.getElementById("cat");
+
+let tries = 0;
+let scale = 1;
+
+const texts = [
+    "ليشش ولج مخبلهه",
+    "دفكريي زين",
+    "هم لا؟ 😂",
+    "هاي آخر فرصة",
+    "مو بكيفج تحبيني غصبا عليج"
+];
+function escapeButton(){
+
+tries++;
+
+counter.innerHTML =
+"محاولات الرفض: " + tries;
+
+message.innerHTML =
+texts[Math.min(tries-1,texts.length-1)];
+
+const x = 80 + Math.random() * 150;
+const y = 260 + Math.random() * 80;
+no.style.left = x + "px";
+no.style.top = y + "px";
+
+scale += 0.25;
+
+yes.style.transform =
+`scale(${scale})`;
+
+music.play().catch(()=>{});
+
+}
+
+no.addEventListener("mouseover",escapeButton);
+no.addEventListener("click",escapeButton);
+
+yes.addEventListener("click",()=>{
+
+document.body.innerHTML =`
+
+<div style="text-align:center;z-index:10;">
+
+<h1 style="
+font-size:60px;
+color:#ff4f8b;
+margin-bottom:20px;
+">
+❤️ اني همم احبجج
+</h1>
+
+<h2>
+${girlName}
+</h2>
+
+<p style="
+font-size:24px;
+margin-top:20px;
+">
+من ${yourName} 💖
+</p>
+
+</div>`;
+
+setInterval(()=>{
+
+const heart =
+document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML =
+["❤️","💖","💕","💘"][Math.floor(Math.random()*4)];
+
+heart.style.left =
+Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+},120);
+
+});
+</script>
+</body>
+</html>
